@@ -1,38 +1,25 @@
-import { NavLink } from 'react-router-dom'
-import logo from '../../assets/img/logo.svg'
+import { HeaderContainer, HeaderButtonsContainer, HeaderButton } from './styles'
 
-import {
-  HeaderContainer,
-  HeaderButtonsContainer,
-  HeaderButton,
-  Location,
-} from './styles'
 import { MapPin, ShoppingCart } from 'phosphor-react'
-import { Button } from '../Buttons'
+
+import coffeeLogoImg from '../../assets/coffee-delivery-logo.svg'
 
 export function Header() {
   return (
     <HeaderContainer>
-      <NavLink to="/">
-        <img
-          src={logo}
-          alt="Imagem de um copo de café roxo com um simbolo de um foguete e ao lado escrito Coffee Delivery"
-          width={84}
-          height={40}
-        />
-      </NavLink>
+      <div className="container">
+        <img src={coffeeLogoImg} alt="Coffee Delivery" />
 
-      <HeaderButtonsContainer>
-        <Location>
-          <MapPin size={20} weight="fill" />
-          São Paulo, SP
-        </Location>
-        <NavLink to="/Checkout">
-          <HeaderButton>
-            <ShoppingCart size={20} weight="fill" />
+        <HeaderButtonsContainer>
+          <HeaderButton variant="purple">
+            <MapPin size={28} weight="fill" />
+            São Paulo, SP
           </HeaderButton>
-        </NavLink>
-      </HeaderButtonsContainer>
+          <HeaderButton variant="yellow">
+            <ShoppingCart size={28} weight="fill" />
+          </HeaderButton>
+        </HeaderButtonsContainer>
+      </div>
     </HeaderContainer>
   )
 }
