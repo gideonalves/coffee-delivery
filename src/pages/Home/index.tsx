@@ -1,3 +1,12 @@
+import { Intro } from './Components/Intro'
+import { OurCoffees } from './Components/OurCoffees'
+import { HomeContainer } from './styles'
+
 export function HomePage() {
-  return <h1>home</h1>
+  return (
+    <HomeContainer>
+      <Intro />
+      <OurCoffees />
+    </HomeContainer>
+  )
 }
