@@ -9,29 +9,41 @@ import {
   AddCartWrapper,
 } from './styles'
 import { QuantityInput } from '../../../../components/QuantityInput'
+import { formatMoney } from '../../../../utils/formatMoney'
 
-export function CoffeeCard() {
+export interface Coffee {
+  id: number
+  tags: string[]
+  name: string
+  description: string
+  photo: string
+  price: number
+}
+
+interface CoffeeProps {
+  coffee: Coffee
+}
+
+export function CoffeeCard({ coffee }: CoffeeProps) {
+  // Formata o preço
+  const formattedPrice = formatMoney(coffee.price)
   return (
     <CoffeeCardContainer>
-      <img
-        src="https://s2.glbimg.com/pGTd3kAbZCgJBM4vEDJmVD806Xo=/e.glbimg.com/og/ed/f/original/2015/03/03/cafezinho.jpg"
-        alt=""
-      />
+      <img src={`/coffees/${coffee.photo}`} alt="" />
 
       <Tags>
-        <span>tradicional</span>
-        <span>com leite</span>
+        {coffee.tags.map((tag) => (
+          <span key={`${coffee.id}${tag}`}>{tag}</span>
+        ))}
       </Tags>
-      <Name>Expresso Tradicional</Name>
-      <Description>
-        O tradicional café feito com água quente e grãos moídos.
-      </Description>
+      <Name>{coffee.name}</Name>
+      <Description>{coffee.description}</Description>
 
       <CardFooter>
         <div>
           <RegularText size="s">R$</RegularText>
           <TitleText size="m" color="text" as="strong">
-            9,90
+            {formattedPrice}
           </TitleText>
         </div>
 
