@@ -1,3 +1,12 @@
+import { CompleteOrderForm } from './components/CompleteOrderForm'
+import { SelectedCoffees } from './components/SelectedCoffees'
+import { ComplenteOrderContainer } from './styles'
+
 export function CompleteOrderPage() {
-  return <h1>Complete</h1>
+  return (
+    <ComplenteOrderContainer className="container">
+      <CompleteOrderForm />
+      <SelectedCoffees />
+    </ComplenteOrderContainer>
+  )
 }
