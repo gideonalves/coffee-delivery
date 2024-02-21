@@ -11,7 +11,7 @@ import {
   Title,
 } from './styles'
 import { ShoppingCart } from 'phosphor-react'
-import { CartContext, CartContextValue } from '../../Contexts/CoffeesContext'
+import { CartContext, CartContextValue } from '../../contexts/CoffeesContext'
 
 export interface Props {
   quantity: number
