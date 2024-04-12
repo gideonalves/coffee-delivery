@@ -17,7 +17,13 @@ export const CoffeeCardContainer = styled.div`
     height: 7.5rem;
     margin-top: -1.25rem;
   }
+
+  img:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s linear;
+  }
 `;
+
 
 export const Tags = styled.div`
   width: 100%;
