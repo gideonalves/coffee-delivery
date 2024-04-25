@@ -2,10 +2,12 @@ import { useCart } from "../../../../hooks/useCart";
 import { TitleText } from "../../../../components/Typography";
 import { CoffeeCartCard } from "../CoffeeCartCard";
 import { ConfirmationSection } from "./ConfirmationSection";
-import { DetailsContainer, SelectedCoffeesContainer } from "./styles";
+import { CartEmptyMessage, DetailsContainer, SelectedCoffeesContainer } from "./styles";
 
 export function SelectedCoffees() {
   const { cartItems } = useCart();
+
+  const isCartEmpty = cartItems.length === 0;
 
   return (
     <SelectedCoffeesContainer>
@@ -14,9 +16,19 @@ export function SelectedCoffees() {
       </TitleText>
 
       <DetailsContainer>
-        {cartItems.map((item) => (
-          <CoffeeCartCard key={item.id} coffee={item} />
-        ))}
+        {isCartEmpty ? (
+          <CartEmptyMessage>
+            <h2>Carrinho vazio!</h2>
+            <a href="/">Clique aqui para ver nosso catálogo de cafés!</a>
+          </CartEmptyMessage>
+        ) : (
+          <div>
+            {cartItems.map((item) => (
+              <CoffeeCartCard key={item.id} coffee={item} />
+            ))}
+          </div>
+        )}
+
 
         <ConfirmationSection />
       </DetailsContainer>

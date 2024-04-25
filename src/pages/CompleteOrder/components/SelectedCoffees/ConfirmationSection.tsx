@@ -8,11 +8,17 @@ const DELIVERY_PRICE = 3.5;
 
 export function ConfirmationSection() {
   const { cartItemsTotal, cartQuantity } = useCart();
-  const cartTotal = DELIVERY_PRICE + cartItemsTotal;
 
-  const formattedItemsTotal = formatMoney(cartItemsTotal);
-  const formattedCartTotal = formatMoney(cartTotal);
-  const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE);
+  console.log(cartItemsTotal);
+  
+  const cartTotal = cartItemsTotal === 0 ? 0 : DELIVERY_PRICE + cartItemsTotal;
+
+  const formattedItemsTotal = formatMoney(cartItemsTotal); // 0,00
+  // console.log(formattedItemsTotal);
+  const formattedCartTotal = formatMoney(cartTotal); // 3,50 
+  // console.log(formattedCartTotal);
+  const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE); // 3,50
+  // console.log(formattedDeliveryPrice);
 
   return (
     <ConfirmationSectionContainer>
@@ -22,7 +28,8 @@ export function ConfirmationSection() {
       </div>
       <div>
         <RegularText size="s">Entrega</RegularText>
-        <RegularText>R$ {formattedDeliveryPrice}</RegularText>
+     
+            <RegularText>R$ {cartItemsTotal > 0 ? formattedDeliveryPrice : formatMoney(0) }</RegularText>
       </div>
       <div>
         <RegularText weight="700" color="subtitle" size="l">
@@ -40,4 +47,5 @@ export function ConfirmationSection() {
       />
     </ConfirmationSectionContainer>
   );
+  
 }

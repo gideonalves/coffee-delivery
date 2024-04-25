@@ -7,6 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
 
+
+
+
 enum PaymentMethods {
   credit = "credit",
   debit = "debit",
@@ -32,7 +35,11 @@ export type OrderData = zod.infer<typeof confirmOrderFormValidationSchema>;
 
 type ConfirmOrderFormData = OrderData;
 
+
+
 export function CompleteOrderPage() {
+
+
   const confirmOrderForm = useForm<ConfirmOrderFormData>({
     resolver: zodResolver(confirmOrderFormValidationSchema),
     defaultValues: {
