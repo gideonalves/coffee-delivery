@@ -15,14 +15,15 @@ interface ErrorsType {
 interface AddressData {
   cep: string;
   localidade: string;
+  bairro: string;
   logradouro: string;
   complement: string;
   uf: string; 
 } 
 
-export function AddressForm<AddressData>() {
+export function AddressForm() {
   const [cep, setCep] = useState("");
-  const [address, setAddress] = useState<any>(null);
+  const [address, setAddress] = useState<AddressData | null>(null);
 
   const { register, formState } = useFormContext();
 
